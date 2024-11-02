@@ -5,7 +5,7 @@
 }
 
 <style>
-    /* Inline CSS til ContactInfo.cshtml */
+    /* Styling for contact title */
     .contact-title {
         font-size: 2.5em;
         text-align: center;
@@ -15,6 +15,7 @@
         padding-bottom: 10px;
     }
 
+    /* Styling for contact text */
     .contact-text {
         text-align: center;
         font-size: 1.2em;
@@ -22,12 +23,14 @@
         color: #555;
     }
 
+    /* Centering and styling for the table container */
     .contact-table-container {
         display: flex;
         justify-content: center;
         margin-top: 20px;
     }
 
+    /* Styling for the contact table */
     .contact-table {
         width: 80%;
         max-width: 600px;
@@ -35,25 +38,33 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .contact-table th,
-    .contact-table td {
-        padding: 15px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
+        .contact-table th,
+        .contact-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
 
-    .contact-table th {
-        background-color: #4CAF50;
-        color: white;
-        font-weight: bold;
-    }
+        .contact-table th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
 
-    .contact-table tr:hover {
-        background-color: #f1f1f1;
-    }
+        .contact-table tr:hover {
+            background-color: #f1f1f1;
+        }
 
-    .contact-table td {
-        color: #333;
+        .contact-table td {
+            color: #333;
+        }
+
+    /* Styling for empty message */
+    .no-contacts {
+        text-align: center;
+        color: #888;
+        font-style: italic;
+        font-size: 1.1em;
     }
 </style>
 
@@ -71,11 +82,23 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Karen</td>
-                <td>12345678</td>
-                <td>ollobolo@gmail.com</td>
-            </tr>
+            @if (Model.ContactItems.Count == 0)
+            {
+                <tr>
+                    <td colspan="3" class="no-contacts">Ingen kontaktinformationer tilgængelige.</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var contact in Model.ContactItems)
+                {
+                    <tr>
+                        <td>@contact.Name</td>
+                        <td>@contact.Phone</td>
+                        <td>@contact.Email</td>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
 </div>
