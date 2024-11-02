@@ -4,26 +4,78 @@
     ViewData["Title"] = "Kontaktinformation";
 }
 
-<h1 class="display-4">Kontaktinformation</h1>
+<style>
+    /* Inline CSS til ContactInfo.cshtml */
+    .contact-title {
+        font-size: 2.5em;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #4CAF50;
+        border-bottom: 2px solid #4CAF50;
+        padding-bottom: 10px;
+    }
 
-<p>Har du spørgsmål eller kommentarer til kantinens menu, er du velkommen til at kontakte os på:</p>
+    .contact-text {
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        color: #555;
+    }
 
+    .contact-table-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
 
-<table>
-    <thead>
-        <tr>
-            <th>Navn</th>
-            <th>Telefon</th>
-            <th>Email</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Karen</td>
-            <td>12345678</td>
-            <td>ollobolo@gmail.com</td>
-            <td/>
+    .contact-table {
+        width: 80%;
+        max-width: 600px;
+        border-collapse: collapse;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-table th,
+    .contact-table td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .contact-table th {
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+    }
+
+    .contact-table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .contact-table td {
+        color: #333;
+    }
+</style>
+
+<h1 class="display-4 contact-title">Kontaktinformation</h1>
+
+<p class="contact-text">Har du spørgsmål eller kommentarer til kantinens menu, er du velkommen til at kontakte os på:</p>
+
+<div class="contact-table-container">
+    <table class="contact-table">
+        <thead>
+            <tr>
+                <th>Navn</th>
+                <th>Telefon</th>
+                <th>Email</th>
             </tr>
-    <tbody/>
-</table>
-      
+        </thead>
+        <tbody>
+            <tr>
+                <td>Karen</td>
+                <td>12345678</td>
+                <td>ollobolo@gmail.com</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
