@@ -1,50 +1,33 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<h2 class="menu-title">Menu - @Model.MenuItems.FirstOrDefault()?.PartitionKey</h2>  
+
+
+@if (Model.MenuItems.Count == 0)
+{
+    <p class="no-items">Ingen menupunkter tilgængelige.</p>
 }
+else
+{
+    <ul class="menu-list">
+        @foreach (var item in Model.MenuItems)
+        {
+            <li class="menu-item">
+                <div class="menu-item-row">
+                    <strong>Dag</strong> @item.RowKey
+                </div>
+                <div class="menu-item-row">
+                    <strong>Varme Ret:</strong> @item.VarmRet
+                </div>
+                <div class="menu-item-row">
+                    <strong>Kold Ret:</strong> @item.KoldRet
+                </div>
 
-<div class="text-center">
-    <h1 class="display-4">Kantinens menu for uge 45</h1>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Dag</th>
-                <th>Varm Ret</th>
-                <th>Kold Ret</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Man</td>
-                <td>Kylling &amp; pasta</td>
-                <td>Smørrebrød</td>
-            </tr>
-            <tr>
-                <td>Tirs</td>
-                <td>Græskarsuppe</td>
-                <td>Pastasalat</td>
-            </tr>
-            <tr>
-                <td>Ons</td>
-                <td>Lasagne</td>
-                <td>Salat</td>
-            </tr>
-            <tr>
-                <td>Tors</td>
-                <td>Fiskefilet</td>
-                <td>Tunsalat</td>
-            </tr>
-            <tr>
-                <td>Fre</td>
-                <td>Pizza</td>
-                <td>Sandwich</td>
-            </tr>
-        </tbody>
-    </table>
-
-
-<p>Velbekomme!</p>
- 
-</div>
+                <br />
+            </li>
+        }
+    </ul>
+}
