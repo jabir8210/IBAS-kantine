@@ -2,9 +2,57 @@
 @model IndexModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
+<style>
+    /* Styling for Menu Title */
+    .menu-title {
+        font-size: 2.5em;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #4CAF50;
+        border-bottom: 2px solid #4CAF50;
+        padding-bottom: 10px;
+    }
 
-<h2 class="menu-title">Menu - @Model.MenuItems.FirstOrDefault()?.PartitionKey</h2>  
+    /* Styling for "no items" message */
+    .no-items {
+        text-align: center;
+        font-size: 1.2em;
+        color: #888;
+        font-style: italic;
+        margin-top: 20px;
+    }
 
+    /* Styling for menu list */
+    .menu-list {
+        list-style-type: none;
+        padding: 0;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Styling for each menu item */
+    .menu-item {
+        background-color: #f9f9f9;
+        margin: 10px 0;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Styling for each row inside the menu item */
+    .menu-item-row {
+        margin: 5px 0;
+        color: #333;
+    }
+
+        /* Styling for labels in each menu item */
+        .menu-item-row strong {
+            color: #4CAF50;
+        }
+</style>
+
+<h2 class="menu-title">Menu - @Model.MenuItems.FirstOrDefault()?.PartitionKey</h2>
 
 @if (Model.MenuItems.Count == 0)
 {
@@ -17,7 +65,7 @@ else
         {
             <li class="menu-item">
                 <div class="menu-item-row">
-                    <strong>Dag</strong> @item.RowKey
+                    <strong>Dag:</strong> @item.RowKey
                 </div>
                 <div class="menu-item-row">
                     <strong>Varme Ret:</strong> @item.VarmRet
@@ -25,7 +73,6 @@ else
                 <div class="menu-item-row">
                     <strong>Kold Ret:</strong> @item.KoldRet
                 </div>
-
                 <br />
             </li>
         }
