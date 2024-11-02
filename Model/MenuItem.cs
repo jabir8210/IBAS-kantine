@@ -9,4 +9,5 @@ public class MenuItem : ITableEntity
     public string KoldRet { get; set; }
     public DateTimeOffset? Timestamp { get; set; }
     public ETag ETag { get; set; }
+
 }
